@@ -1,6 +1,15 @@
-LDFLAGS=-lcurses
+# Makefile
+LDFLAGS=-lncurses
 
-all: tinytetris
+SRCOS := $(wildcard *.o)
+tinytetris.o: tinytetris.cpp
+	$(CC) -c tinytetris.cpp
+
+all: $(SRCOS)
+	$(CC) -o tinytetris $(SRCOS) $(LDFLAGS)
 
 clean:
-	rm -f tinytetris tinytetris-commented
+	rm -f tinytetris tinytetris_backpack
+
+test:
+	@#This is test
